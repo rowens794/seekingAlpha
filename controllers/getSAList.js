@@ -286,11 +286,11 @@ const sendEmail = (response) => {
 };
 
 const createEmailBody = (obj) => {
-  let string = "<b>ACTIVE SECURITIES</b><br/>";
+  let string = "<b>REMOVED SECURITIES</b><br/>";
   console.log(obj);
 
   obj.removals.forEach((rem) => {
-    string = string.concat(`${rem}<br/>`);
+    string = string.concat(`<b>${rem}</b><br/>`);
   });
 
   string = string.concat("<br/><br/><b>ACTIVE SECURITIES</b><br/>");
