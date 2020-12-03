@@ -262,7 +262,7 @@ const createSecurityString = (sec) => {
   let pageviews = new Number(sec.pageViews);
   pageviews = Math.round(pageviews / 1000);
 
-  return `${ticker}  | ${sec.tickerIsActive ? "O" : "X"} | ${payment} | ${name} | ${pageviews}k`;
+  return `${ticker} | ${payment} | ${name} | ${pageviews}k`;
 };
 
 const sendEmail = (response) => {
@@ -286,14 +286,14 @@ const sendEmail = (response) => {
 };
 
 const createEmailBody = (obj) => {
-  let string = "REMOVALS<br/>";
+  let string = "<b>ACTIVE SECURITIES</b><br/>";
   console.log(obj);
 
   obj.removals.forEach((rem) => {
     string = string.concat(`${rem}<br/>`);
   });
 
-  string = string.concat("<br/><br/>ACTIVE SECURITIES<br/>");
+  string = string.concat("<br/><br/><b>ACTIVE SECURITIES</b><br/>");
   obj.activeSecs.forEach((sec) => {
     string = string.concat(`${sec}<br/>`);
   });
