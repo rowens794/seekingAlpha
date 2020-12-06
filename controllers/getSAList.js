@@ -251,15 +251,15 @@ const buildResponseString = (mySecurities, additions, removals, tickersFollowed)
 
 const createSecurityString = (sec) => {
   let name = sec.name ? sec.name.substr(0, 15) : "";
-  while (name.length < 15) name = name.concat("_");
+  while (name && name.length < 15) name = name.concat("_");
 
   let ticker = sec.ticker;
-  while (ticker.length < 5) ticker = ticker.concat("_");
+  while (ticker && ticker.length < 5) ticker = ticker.concat("_");
 
   let payment = sec.payment;
-  while (payment.length < 4) payment = payment.concat("_");
+  while (payment && payment.length < 4) payment = payment.concat("_");
 
-  let pageviews = new Number(sec.pageViews);
+  let pageviews = sec.pageViews ? new Number(sec.pageViews) : 0;
   pageviews = Math.round(pageviews / 1000);
 
   return `${ticker} | ${payment} | ${name} | ${pageviews}k`;
